@@ -22,7 +22,7 @@ export function ContactSection() {
 
     try {
       // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY") // You'll need to replace this
+      emailjs.init("ERf2VQKjy8zg7Wmyt")
 
       const templateParams = {
         from_name: formData.name,
@@ -32,8 +32,8 @@ export function ContactSection() {
       }
 
       await emailjs.send(
-        "YOUR_SERVICE_ID", // You'll need to replace this
-        "YOUR_TEMPLATE_ID", // You'll need to replace this
+        "iSteveChea@99",
+        "contact_us",
         templateParams
       )
 
