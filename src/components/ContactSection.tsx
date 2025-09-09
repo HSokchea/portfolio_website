@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
+import emailjs from '@emailjs/browser'
+import { useToast } from "@/hooks/use-toast"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,13 +13,47 @@ export function ContactSection() {
     email: "",
     message: ""
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({ name: "", email: "", message: "" })
+    setIsSubmitting(true)
+
+    try {
+      // Initialize EmailJS with your public key
+      emailjs.init("YOUR_PUBLIC_KEY") // You'll need to replace this
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: "sokcheahy57@gmail.com"
+      }
+
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // You'll need to replace this
+        "YOUR_TEMPLATE_ID", // You'll need to replace this
+        templateParams
+      )
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      })
+
+      // Reset form
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error) {
+      console.error("Error sending email:", error)
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly at sokcheahy57@gmail.com",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,7 +67,7 @@ export function ContactSection() {
     {
       name: "Email",
       icon: <Mail className="h-5 w-5" />,
-      url: "mailto:alex.johnson@example.com",
+      url: "mailto:sokcheahy57@gmail.com",
       color: "hover:text-red-500"
     },
     {
@@ -91,7 +127,7 @@ export function ContactSection() {
                 <div className="space-y-4">
                   <div className="flex items-center text-muted-foreground">
                     <Mail className="h-5 w-5 mr-3 text-primary" />
-                    <span>alex.johnson@example.com</span>
+                    <span>sokcheahy57@gmail.com</span>
                   </div>
                   <div className="flex items-center text-muted-foreground">
                     <span className="w-5 h-5 mr-3 text-primary flex items-center justify-center">📍</span>
@@ -180,10 +216,11 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-primary hover:bg-primary-hover text-primary-foreground shadow-glow hover:shadow-large transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary-hover text-primary-foreground shadow-glow hover:shadow-large transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </motion.div>

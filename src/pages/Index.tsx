@@ -9,6 +9,7 @@ import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { TimelineSection } from "@/components/TimelineSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
+import { Toaster } from "@/components/ui/toaster"
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
         </main>
         
         <Footer />
+        <Toaster />
       </div>
     </ThemeProvider>
   );
