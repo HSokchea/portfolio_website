@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
-
+import emailjs from '@emailjs/browser'
 import { useToast } from "@/hooks/use-toast"
 
 export function ContactSection() {
@@ -21,24 +21,21 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      // For now, using the direct Supabase URL until env vars are properly configured
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://eruffbncnptlgjanlpnq.supabase.co'
-      const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVydWZmYm5jbnB0bGdqYW5scG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MzMxMzIsImV4cCI6MjA3MzMwOTEzMn0.LEDm5JKYGhxXAiWe-hAa0bDoCG0aT-JlT1xizLGM72M'
-      
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseKey}`,
-        },
-        body: JSON.stringify(formData),
-      })
+      // Initialize EmailJS with your public key
+      emailjs.init("ERf2VQKjy8zg7Wmyt")
 
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send email')
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: "sokcheahy57@gmail.com"
       }
+
+      await emailjs.send(
+        "iSteveChea@99",
+        "contact_us",
+        templateParams
+      )
 
       toast({
         title: "Message sent successfully!",
