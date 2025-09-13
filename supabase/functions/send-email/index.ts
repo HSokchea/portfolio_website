@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createTransporter } from "https://deno.land/x/nodemailer@1.0.0/mod.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -25,30 +24,47 @@ serve(async (req) => {
       throw new Error('Email credentials not configured')
     }
 
-    // Create transporter
-    const transporter = createTransporter({
-      host: EMAIL_HOST,
-      port: EMAIL_PORT,
-      secure: false,
-      auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS,
+    // Send email using Gmail API
+    const emailBody = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+    `
+
+    // Create the email content in RFC 2822 format
+    const emailContent = [
+      `From: ${EMAIL_USER}`,
+      `To: ${EMAIL_USER}`,
+      `Subject: New Contact Form Message from ${name}`,
+      `Content-Type: text/html; charset=utf-8`,
+      '',
+      emailBody
+    ].join('\r\n')
+
+    // Encode the email content in base64
+    const encodedEmail = btoa(emailContent)
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, '')
+
+    // Send email using Gmail API
+    const response = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${EMAIL_PASS}`, // Use app password as bearer token
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        raw: encodedEmail
+      })
     })
 
-    // Send email
-    await transporter.sendMail({
-      from: EMAIL_USER,
-      to: EMAIL_USER, // Send to yourself
-      subject: `New Contact Form Message from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    })
+    if (!response.ok) {
+      // Fallback: Try using a different approach if Gmail API fails
+      throw new Error(`Failed to send email: ${response.status} ${response.statusText}`)
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: 'Email sent successfully' }),
