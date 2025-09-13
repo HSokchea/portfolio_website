@@ -21,11 +21,10 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://your-project-id.supabase.co/functions/v1/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify(formData),
       })
