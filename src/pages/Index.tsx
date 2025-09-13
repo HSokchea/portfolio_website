@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { ThemeToggle } from "@/components/ThemeToggle"
+import { Navigation } from "@/components/Navigation"
 import { HeroSection } from "@/components/HeroSection"
 import { AboutSection } from "@/components/AboutSection"
 import { SkillsSection } from "@/components/SkillsSection"
@@ -15,17 +16,30 @@ const Index = () => {
   return (
     <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
       <div className="min-h-screen bg-background">
+        <Navigation />
         <ThemeToggle />
         
         <main>
           <HeroSection />
-          <AboutSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <BlogSection />
+          <section id="about">
+            <AboutSection />
+          </section>
+          <section id="skills">
+            <SkillsSection />
+          </section>
+          <section id="projects">
+            <ProjectsSection />
+          </section>
+          <section id="blog">
+            <BlogSection />
+          </section>
           <TestimonialsSection />
-          <TimelineSection />
-          <ContactSection />
+          <section id="timeline">
+            <TimelineSection />
+          </section>
+          <section id="contact">
+            <ContactSection />
+          </section>
         </main>
         
         <Footer />
