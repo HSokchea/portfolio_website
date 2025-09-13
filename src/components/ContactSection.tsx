@@ -21,11 +21,11 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-email`, {
+      const response = await fetch('https://eruffbncnptlgjanlpnq.supabase.co/functions/v1/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVydWZmYm5jbnB0bGdqYW5scG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MzMxMzIsImV4cCI6MjA3MzMwOTEzMn0.LEDm5JKYGhxXAiWe-hAa0bDoCG0aT-JlT1xizLGM72M',
         },
         body: JSON.stringify(formData),
       })
