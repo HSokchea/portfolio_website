@@ -21,11 +21,15 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-email`, {
+      // For now, using the direct Supabase URL until env vars are properly configured
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://eruffbncnptlgjanlpnq.supabase.co'
+      const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVydWZmYm5jbnB0bGdqYW5scG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MzMxMzIsImV4cCI6MjA3MzMwOTEzMn0.LEDm5JKYGhxXAiWe-hAa0bDoCG0aT-JlT1xizLGM72M'
+      
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Authorization': `Bearer ${supabaseKey}`,
         },
         body: JSON.stringify(formData),
       })
