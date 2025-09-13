@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
-import emailjs from '@emailjs/browser'
+
 import { useToast } from "@/hooks/use-toast"
 
 export function ContactSection() {
@@ -21,21 +21,19 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init("ERf2VQKjy8zg7Wmyt")
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: "sokcheahy57@gmail.com"
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send email')
       }
-
-      await emailjs.send(
-        "iSteveChea@99",
-        "contact_us",
-        templateParams
-      )
 
       toast({
         title: "Message sent successfully!",
