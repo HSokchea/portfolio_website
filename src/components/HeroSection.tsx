@@ -1,74 +1,82 @@
 import { motion } from "framer-motion"
 import { Download, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Typewriter } from 'react-simple-typewriter';
 
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-muted">
       {/* Background decoration */}
       <div className="absolute inset-0 hero-gradient opacity-5" />
-      
-      <motion.div 
+
+      <motion.div
         className="container px-4 mx-auto text-center z-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.h1 
-          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2"
+        <motion.h1
+          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           Hy Sokchea
         </motion.h1>
-        
-        <motion.h2 
-          className="text-2xl md:text-3xl font-medium text-foreground mb-4"
+        <motion.h2
+          className="text-2xl md:text-3xl font-medium text-foreground mb-4 flex flex-wrap text-center justify-center items-center gap-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          I'm a iOS Developer
+          <span>I'm an&nbsp;</span>
+          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <Typewriter
+              words={['iOS Developer', 'Software Engineer']}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={2000}
+            />
+          </span>
         </motion.h2>
-        
-        <motion.p 
+        <motion.p
           className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Crafting beautiful, intuitive mobile experiences with Swift and SwiftUI. 
+          Crafting beautiful, intuitive mobile experiences with Swift and SwiftUI.
           Passionate about clean code, user-centric design, and bringing ideas to life.
         </motion.p>
-        
-        <motion.div 
+
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-via-purple-500-hover text-white-foreground shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume
           </Button>
-          
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-3 transition-smooth hover:bg-secondary"
+            className="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 px-8 py-3 transition-smooth hover:bg-primary-hover shadow-glow hover:shadow-large"
           >
             Learn More
           </Button>
         </motion.div>
       </motion.div>
-      
+
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

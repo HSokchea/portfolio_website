@@ -12,7 +12,7 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             About Me
           </h2>
 
@@ -57,8 +57,17 @@ export function AboutSection() {
                 Passionate about developing high-performance, secure mobile solutions for fintech, banking and enterprise
                 use cases.
               </p>
-
-              <div className="grid grid-cols-2 gap-6 pt-4">
+            </motion.div>
+          </div>
+          <div className="grid md:grid-cols-1 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="grid grid-cols-4 gap-6 pt-4">
                 <div className="text-center p-4 card-gradient rounded-xl shadow-soft">
                   <div className="text-3xl font-bold text-primary mb-2">2+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>

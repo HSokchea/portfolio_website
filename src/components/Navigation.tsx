@@ -55,8 +55,8 @@ export const Navigation = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center"
           >
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              Portfolio
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
+              Hy Sokchea
             </span>
           </motion.div>
 

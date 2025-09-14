@@ -1,17 +1,18 @@
 import { motion } from "framer-motion"
 
 const skills = [
-  { name: "Swift", percentage: 95, icon: "🚀" },
-  { name: "SwiftUI", percentage: 80, icon: "🎨" },
-  { name: "UIKit", percentage: 95, icon: "📱" },
-  { name: "JavaScript", percentage: 60, icon: "⚡" },
-  { name: "NextJS", percentage: 60, icon: "💾" },
-  { name: "Spring Boot", percentage: 40, icon: "⚡" },
-  { name: "Java", percentage: 60, icon: "⚡" },
-  { name: "Xcode", percentage: 95, icon: "🔧" },
-  { name: "Git", percentage: 90, icon: "📦" },
-  { name: "Firebase", percentage: 75, icon: "🔥" },
-  { name: "Figma", percentage: 65, icon: "🔧" },
+  { name: "Swift", percentage: 95, icon: "" },
+  { name: "SwiftUI", percentage: 80, icon: "" },
+  { name: "UIKit", percentage: 95, icon: "" },
+  { name: "JavaScript", percentage: 60, icon: "" },
+  { name: "NextJS", percentage: 60, icon: "" },
+  { name: "Spring Boot", percentage: 40, icon: "" },
+  { name: "Java", percentage: 60, icon: "" },
+  { name: "Xcode", percentage: 95, icon: "" },
+  { name: "Git", percentage: 90, icon: "" },
+  { name: "Firebase", percentage: 75, icon: "" },
+  { name: "Figma", percentage: 65, icon: "" },
+  { name: "Jira", percentage: 80, icon: "" },
 ]
 
 const skillCategories = [
@@ -45,7 +46,7 @@ export function SkillsSection() {
           
           <div className="max-w-6xl mx-auto">
             {/* Skill Progress Bars */}
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
@@ -74,33 +75,10 @@ export function SkillsSection() {
                 </motion.div>
               ))}
             </div>
-            
-            {/* Skill Categories */}
-            <div className="grid md:grid-cols-3 gap-8">
-              {skillCategories.map((category, index) => (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="p-6 card-gradient rounded-xl shadow-soft hover:shadow-medium transition-all duration-300"
-                >
-                  <h3 className="text-xl font-semibold mb-4 text-primary">{category.title}</h3>
-                  <ul className="space-y-2">
-                    {category.skills.map((skill) => (
-                      <li key={skill} className="text-muted-foreground flex items-center">
-                        <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
     </section>
   )
 }
+// hover:shadow-large transition-all duration-500 transform hover:-translate-y-2
