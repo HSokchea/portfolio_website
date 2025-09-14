@@ -50,39 +50,40 @@ export function TestimonialsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             What People Say
           </h2>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.1 }}
                   viewport={{ once: true }}
                   className="group cursor-pointer relative transition-transform duration-500"
                 >
                   {/* Border Layer (normal border by default, gradient on hover) */}
-                  <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
-                    
+                  <div className="relative rounded-2xl p-[1px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+
                     {/* Inner Card Layer (background & content) */}
-                    <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
-                      
+                    <div className="relative rounded-[calc(1rem-1px)] bg-background overflow-hidden">
+
                       {/* Semi-transparent gradient overlay */}
-                      <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
+                      <div className="absolute inset-0 z-10 rounded-[calc(1rem-1px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                       {/* Content */}
                       <div className="relative z-20 p-6">
                         <div className="absolute top-4 right-4 text-primary/20">
                           <Quote className="h-8 w-8" />
                         </div>
-                        
+
                         <div className="mb-6">
                           <p className="text-muted-foreground leading-relaxed italic">
                             "{testimonial.content}"
                           </p>
                         </div>
-                        
+
                         <div className="flex items-center">
                           <img
                             src={testimonial.avatar}

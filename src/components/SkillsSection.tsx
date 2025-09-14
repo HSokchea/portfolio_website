@@ -53,18 +53,18 @@ export function SkillsSection() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.1}}
                   viewport={{ once: true }}
                   className="group cursor-pointer relative transition-transform duration-500"
                 >
                   {/* 🌈 Border Layer (normal border by default, gradient on hover) */}
-                  <div className="relative rounded-xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+                  <div className="relative rounded-xl p-[1px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
 
                     {/* 🟫 Inner Card Layer (background & content) */}
-                    <div className="relative rounded-[calc(0.75rem-2px)] bg-background overflow-hidden">
+                    <div className="relative rounded-[calc(0.75rem-1px)] bg-background overflow-hidden">
 
                       {/* 🎨 Semi-transparent gradient overlay */}
-                      <div className="absolute inset-0 z-10 rounded-[calc(0.75rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 z-10 rounded-[calc(0.75rem-1px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* 💬 Content */}
                       <div className="relative z-20 p-4">

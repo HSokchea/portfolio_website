@@ -59,16 +59,15 @@ export function HeroSection() {
         >
           <Button
             size="lg"
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-via-purple-500-hover text-white-foreground shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-via-purple-500-hover text-white shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume
           </Button>
           <Button
-            variant="outline"
             size="lg"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 px-8 py-3 transition-smooth hover:bg-primary-hover shadow-glow hover:shadow-large"
+            className="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 px-8 py-3 transition-smooth hover:bg-primary-hover text-white shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
           >
             Learn More
           </Button>

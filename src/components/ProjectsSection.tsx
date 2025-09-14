@@ -93,23 +93,25 @@ export function ProjectsSection() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.1 }}
                 viewport={{ once: true }}
                 className="group cursor-pointer relative transition-transform duration-500"
                 onClick={() => handleProjectClick(project)}
               >
                 {/* 🌈 Border Layer (normal border by default, gradient on hover) */}
-                <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+                <div className="relative rounded-2xl p-[1px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
 
                   {/* 🟫 Inner Card Layer (background & content) */}
-                  <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
+                  <div className="relative rounded-[calc(1rem-1px)] bg-background overflow-hidden">
 
                     {/* 🎨 Semi-transparent gradient overlay */}
-                    <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 z-10 rounded-[calc(1rem-1px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* 📸 Image section */}
-                    <div className="aspect-video relative overflow-hidden rounded-t-[calc(1rem-2px)]">
+                    <div className="aspect-video relative overflow-hidden rounded-t-[calc(1rem-1px)]">
                       <img
                         src={project.image}
                         alt={project.title}

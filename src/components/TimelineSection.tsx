@@ -100,19 +100,20 @@ export function TimelineSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             Experience & Timeline
           </h2>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
-              
+
               <div className="space-y-12">
                 {timelineItems.map((item, index) => (
                   <motion.div
                     key={item.id}
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -10 }}
+                    transition={{ duration: 0.1 }}
                     viewport={{ once: true }}
                     className="relative flex items-start"
                   >
@@ -120,7 +121,7 @@ export function TimelineSection() {
                     <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-card shadow-medium ${getIconColor(item.type)}`}>
                       {getIcon(item.type)}
                     </div>
-                    
+
                     {/* Content */}
                     <div className="ml-8 flex-1">
                       <motion.div
@@ -128,14 +129,14 @@ export function TimelineSection() {
                         whileHover={{ y: -2 }}
                       >
                         {/* Border Layer (normal border by default, gradient on hover) */}
-                        <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
-                          
+                        <div className="relative rounded-2xl p-[1px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+
                           {/* Inner Card Layer (background & content) */}
-                          <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
-                            
+                          <div className="relative rounded-[calc(1rem-1px)] bg-background overflow-hidden">
+
                             {/* Semi-transparent gradient overlay */}
-                            <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            
+                            <div className="absolute inset-0 z-10 rounded-[calc(1rem-1px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                             {/* Content */}
                             <div className="relative z-20 p-6">
                               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
@@ -152,7 +153,7 @@ export function TimelineSection() {
                                   {item.date}
                                 </span>
                               </div>
-                              
+
                               <p className="text-muted-foreground leading-relaxed">
                                 {item.description}
                               </p>
