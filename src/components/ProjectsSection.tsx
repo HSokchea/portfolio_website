@@ -88,61 +88,71 @@ export function ProjectsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             Featured Projects
           </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group cursor-pointer"
+                className="group cursor-pointer relative transition-transform duration-500"
                 onClick={() => handleProjectClick(project)}
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-medium hover:shadow-large transition-all duration-500 transform hover:-translate-y-2">
-                  <div className="aspect-video relative">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold">
-                        View Project
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6 card-gradient">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        {project.category}
-                      </span>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 3).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
-                        >
-                          {tech}
+                {/* 🌈 Gradient Border Layer (wraps everything) */}
+                <div className="relative rounded-2xl p-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-all duration-500">
+
+                  {/* 🟫 Inner Card Layer (background & content) */}
+                  <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
+
+                    {/* 🎨 Semi-transparent gradient overlay */}
+                    <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* 📸 Image section */}
+                    <div className="aspect-video relative overflow-hidden rounded-t-[calc(1rem-2px)]">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold">
+                          View Project
                         </span>
-                      ))}
-                      {project.techStack.length > 3 && (
-                        <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
-                          +{project.techStack.length - 3} more
+                      </div>
+                    </div>
+
+                    {/* 📝 Text Content */}
+                    <div className="p-6 relative z-20">
+                      <div className="flex items-start justify-between mb-3">
+                        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
+                          {project.category}
                         </span>
-                      )}
+                      </div>
+
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.techStack.length > 3 && (
+                          <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
+                            +{project.techStack.length - 3} more
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -151,7 +161,6 @@ export function ProjectsSection() {
           </div>
         </motion.div>
       </div>
-      
       <ProjectModal
         project={selectedProject}
         isOpen={isModalOpen}
