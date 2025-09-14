@@ -12,10 +12,10 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2">
             About Me
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -28,12 +28,12 @@ export function AboutSection() {
                 <div className="absolute inset-0 hero-gradient rounded-2xl blur-3xl opacity-20"></div>
                 <img
                   src={profileImage}
-                  alt="Alex Johnson"
+                  alt="Hy Sokchea"
                   className="relative w-full rounded-2xl shadow-large"
                 />
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -42,25 +42,29 @@ export function AboutSection() {
               className="space-y-6"
             >
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Hi! I'm Alex, a passionate iOS developer with over 5 years of experience creating 
-                mobile applications that users love. I specialize in Swift and SwiftUI, with a 
-                keen eye for design and user experience.
+                Hi! I'm Sokchea, a passionate iOS Developer with over 2 years of hands-on experience building and
+                maintaining scalable, user-friendly iOS apps using Swift, SwiftUI,
+                UIKit, Combine, and CoreData. Proven track record delivering
+                production-ready features for both local and outsourced fintech
+                projects, including expense management apps like Bizplay and
+                WABOOK. Skilled in RESTful API integration, secure data handling,
+                and guiding junior developers. Experienced in managing TestFlight
+                distributions, and well-versed in SOLID principles, clean architecture,
+                and Apple’s app compliance standards.
               </p>
-              
+
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring the latest in mobile technology, 
-                contributing to open-source projects, or mentoring fellow developers. I believe 
-                in writing clean, maintainable code and creating apps that make a real difference 
-                in people's lives.
+                Passionate about developing high-performance, secure mobile solutions for fintech, banking and enterprise
+                use cases.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-6 pt-4">
                 <div className="text-center p-4 card-gradient rounded-xl shadow-soft">
-                  <div className="text-3xl font-bold text-primary mb-2">5+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">2+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </div>
                 <div className="text-center p-4 card-gradient rounded-xl shadow-soft">
-                  <div className="text-3xl font-bold text-primary mb-2">20+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">10+</div>
                   <div className="text-sm text-muted-foreground">Apps Developed</div>
                 </div>
                 <div className="text-center p-4 card-gradient rounded-xl shadow-soft">

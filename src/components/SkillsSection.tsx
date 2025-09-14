@@ -2,13 +2,16 @@ import { motion } from "framer-motion"
 
 const skills = [
   { name: "Swift", percentage: 95, icon: "🚀" },
-  { name: "SwiftUI", percentage: 90, icon: "🎨" },
-  { name: "UIKit", percentage: 85, icon: "📱" },
-  { name: "Core Data", percentage: 80, icon: "💾" },
-  { name: "Combine", percentage: 85, icon: "⚡" },
+  { name: "SwiftUI", percentage: 80, icon: "🎨" },
+  { name: "UIKit", percentage: 95, icon: "📱" },
+  { name: "JavaScript", percentage: 60, icon: "⚡" },
+  { name: "NextJS", percentage: 60, icon: "💾" },
+  { name: "Spring Boot", percentage: 40, icon: "⚡" },
+  { name: "Java", percentage: 60, icon: "⚡" },
   { name: "Xcode", percentage: 95, icon: "🔧" },
   { name: "Git", percentage: 90, icon: "📦" },
   { name: "Firebase", percentage: 75, icon: "🔥" },
+  { name: "Figma", percentage: 65, icon: "🔧" },
 ]
 
 const skillCategories = [
@@ -36,7 +39,7 @@ export function SkillsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2">
             Skills & Technologies
           </h2>
           

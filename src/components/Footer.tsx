@@ -45,7 +45,7 @@ export function Footer() {
           
           {/* Copyright */}
           <div className="flex items-center justify-center space-x-2 text-muted-foreground">
-            <span>© {currentYear} Alex Johnson. Built with</span>
+            <span>© {currentYear} Hy Sokchea Built with</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
             <span>and lots of coffee.</span>
           </div>
