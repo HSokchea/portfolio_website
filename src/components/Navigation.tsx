@@ -136,7 +136,7 @@ export const Navigation = () => {
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
                 exit={{ y: 0 }}
-                className="space-y-2 px-2 rounded-lg mt-2 mb-2 shadow-soft"
+                className="space-y-2 px-2 rounded-lg mt-2 mb-2"
               >
                 {navItems.map((item, index) => (
                   <motion.button
