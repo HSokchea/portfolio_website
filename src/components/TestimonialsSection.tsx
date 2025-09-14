@@ -60,29 +60,43 @@ export function TestimonialsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="relative p-6 card-gradient rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
+                  className="group cursor-pointer relative transition-transform duration-500"
                 >
-                  <div className="absolute top-4 right-4 text-primary/20">
-                    <Quote className="h-8 w-8" />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <p className="text-muted-foreground leading-relaxed italic">
-                      "{testimonial.content}"
-                    </p>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role} at {testimonial.company}
-                      </p>
+                  {/* Border Layer (normal border by default, gradient on hover) */}
+                  <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+                    
+                    {/* Inner Card Layer (background & content) */}
+                    <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
+                      
+                      {/* Semi-transparent gradient overlay */}
+                      <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Content */}
+                      <div className="relative z-20 p-6">
+                        <div className="absolute top-4 right-4 text-primary/20">
+                          <Quote className="h-8 w-8" />
+                        </div>
+                        
+                        <div className="mb-6">
+                          <p className="text-muted-foreground leading-relaxed italic">
+                            "{testimonial.content}"
+                          </p>
+                        </div>
+                        
+                        <div className="flex items-center">
+                          <img
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            className="w-12 h-12 rounded-full object-cover mr-4"
+                          />
+                          <div>
+                            <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                            <p className="text-sm text-muted-foreground">
+                              {testimonial.role} at {testimonial.company}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>

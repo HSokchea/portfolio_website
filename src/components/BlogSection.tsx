@@ -73,8 +73,19 @@ export function BlogSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group p-6 card-gradient rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50"
+                  className="group cursor-pointer relative transition-transform duration-500"
                 >
+                  {/* Border Layer (normal border by default, gradient on hover) */}
+                  <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+                    
+                    {/* Inner Card Layer (background & content) */}
+                    <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
+                      
+                      {/* Semi-transparent gradient overlay */}
+                      <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Content */}
+                      <div className="relative z-20 p-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div className="flex items-center gap-4 mb-2 md:mb-0">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
@@ -99,13 +110,16 @@ export function BlogSection() {
                     {post.excerpt}
                   </p>
                   
-                  <Button
-                    variant="ghost"
-                    className="group-hover:text-primary transition-colors duration-300 p-0 h-auto font-semibold"
-                  >
-                    Read More
-                    <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
+                        <Button
+                          variant="ghost"
+                          className="group-hover:text-primary transition-colors duration-300 p-0 h-auto font-semibold"
+                        >
+                          Read More
+                          <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 </motion.article>
               ))}
             </div>

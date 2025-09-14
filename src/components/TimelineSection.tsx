@@ -124,27 +124,41 @@ export function TimelineSection() {
                     {/* Content */}
                     <div className="ml-8 flex-1">
                       <motion.div
-                        className="p-6 card-gradient rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
+                        className="group cursor-pointer relative transition-transform duration-500"
                         whileHover={{ y: -2 }}
                       >
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-semibold text-foreground mb-1">
-                              {item.title}
-                            </h3>
-                            <p className="text-primary font-medium">{item.organization}</p>
-                            {item.location && (
-                              <p className="text-sm text-muted-foreground">{item.location}</p>
-                            )}
+                        {/* Border Layer (normal border by default, gradient on hover) */}
+                        <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
+                          
+                          {/* Inner Card Layer (background & content) */}
+                          <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
+                            
+                            {/* Semi-transparent gradient overlay */}
+                            <div className="absolute inset-0 z-10 rounded-[calc(1rem-2px)] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            
+                            {/* Content */}
+                            <div className="relative z-20 p-6">
+                              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                                <div>
+                                  <h3 className="text-xl font-semibold text-foreground mb-1">
+                                    {item.title}
+                                  </h3>
+                                  <p className="text-primary font-medium">{item.organization}</p>
+                                  {item.location && (
+                                    <p className="text-sm text-muted-foreground">{item.location}</p>
+                                  )}
+                                </div>
+                                <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full whitespace-nowrap mt-2 md:mt-0">
+                                  {item.date}
+                                </span>
+                              </div>
+                              
+                              <p className="text-muted-foreground leading-relaxed">
+                                {item.description}
+                              </p>
+                            </div>
                           </div>
-                          <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full whitespace-nowrap mt-2 md:mt-0">
-                            {item.date}
-                          </span>
                         </div>
-                        
-                        <p className="text-muted-foreground leading-relaxed">
-                          {item.description}
-                        </p>
                       </motion.div>
                     </div>
                   </motion.div>
