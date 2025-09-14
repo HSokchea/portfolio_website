@@ -99,8 +99,8 @@ export function ProjectsSection() {
                 className="group cursor-pointer relative transition-transform duration-500"
                 onClick={() => handleProjectClick(project)}
               >
-                {/* 🌈 Gradient Border Layer (wraps everything) */}
-                <div className="relative rounded-2xl p-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-all duration-500">
+                {/* 🌈 Border Layer (normal border by default, gradient on hover) */}
+                <div className="relative rounded-2xl p-[2px] bg-border group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-500">
 
                   {/* 🟫 Inner Card Layer (background & content) */}
                   <div className="relative rounded-[calc(1rem-2px)] bg-background overflow-hidden">
