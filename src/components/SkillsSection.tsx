@@ -54,8 +54,16 @@ export function SkillsSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 card-gradient rounded-xl shadow-soft"
+                  className="group relative p-6 card-gradient rounded-xl shadow-soft hover:shadow-large transition-all duration-500 transform hover:-translate-y-2 border border-transparent hover:border-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 overflow-hidden"
                 >
+                  {/* Gradient border overlay */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" 
+                       style={{ padding: '1px' }}>
+                    <div className="w-full h-full bg-background rounded-xl" />
+                  </div>
+                  
+                  {/* Semi-transparent gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{skill.icon}</span>
