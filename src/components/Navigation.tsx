@@ -90,7 +90,7 @@ export const Navigation = () => {
             <ThemeToggle />
             {/* Mobile Menu Button */}
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
               className="relative"
@@ -135,8 +135,8 @@ export const Navigation = () => {
               <motion.div
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
-                exit={{ y: -20 }}
-                className="py-4 space-y-2 bg-card/95 backdrop-blur-lg rounded-lg mt-2 border border-border shadow-medium"
+                exit={{ y: 0 }}
+                className="space-y-2 px-2 rounded-lg mt-2 mb-2 shadow-soft"
               >
                 {navItems.map((item, index) => (
                   <motion.button
@@ -145,7 +145,7 @@ export const Navigation = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="w-full text-left px-6 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-smooth rounded-lg mx-2"
+                    className="w-full text-center px-6 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-smooth rounded-lg"
                   >
                     {item.name}
                   </motion.button>
