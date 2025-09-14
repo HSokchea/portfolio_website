@@ -40,7 +40,7 @@ export function SkillsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             Skills & Technologies
           </h2>
           
@@ -65,7 +65,7 @@ export function SkillsSection() {
                   </div>
                   <div className="w-full bg-border rounded-full h-2">
                     <motion.div
-                      className="h-2 bg-gradient-to-r from-primary to-primary-glow rounded-full"
+                      className="h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-via-purple-500-hover rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.percentage}%` }}
                       transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
@@ -81,4 +81,3 @@ export function SkillsSection() {
     </section>
   )
 }
-// hover:shadow-large transition-all duration-500 transform hover:-translate-y-2
