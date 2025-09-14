@@ -17,7 +17,6 @@ const Index = () => {
     <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
       <div className="min-h-screen bg-background">
         <Navigation />
-        <ThemeToggle />
         
         <main>
           <HeroSection />

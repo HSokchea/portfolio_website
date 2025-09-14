@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -60,34 +61,39 @@ export const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          {!isMobile && (
-            <div className="hidden md:flex items-center space-x-1">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  onClick={() => scrollToSection(item.href)}
-                  className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth group"
-                >
-                  {item.name}
-                  {/* Animated underline */}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 group-hover:w-full"></span>
-                  {/* Hover background */}
-                  <span className="absolute inset-0 bg-accent/50 rounded-lg scale-0 transition-transform duration-200 group-hover:scale-100 -z-10"></span>
-                </motion.button>
-              ))}
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                onClick={() => scrollToSection(item.href)}
+                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth group"
+              >
+                {item.name}
+                {/* Animated underline */}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 group-hover:w-full"></span>
+                {/* Hover background */}
+                <span className="absolute inset-0 bg-accent/50 rounded-lg scale-0 transition-transform duration-200 group-hover:scale-100 -z-10"></span>
+              </motion.button>
+            ))}
+            {/* Desktop Theme Toggle */}
+            <div className="ml-4">
+              <ThemeToggle />
             </div>
-          )}
+          </div>
 
-          {/* Mobile Menu Button */}
-          {isMobile && (
+          {/* Mobile Controls */}
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile Theme Toggle */}
+            <ThemeToggle />
+            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden"
+              className="relative"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -113,7 +119,7 @@ export const Navigation = () => {
                 )}
               </AnimatePresence>
             </Button>
-          )}
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
