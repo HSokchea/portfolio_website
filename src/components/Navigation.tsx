@@ -42,7 +42,7 @@ export const Navigation = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || (isOpen && isMobile)
           ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-soft"
           : "bg-transparent"
       }`}
