@@ -91,11 +91,7 @@ export const Navigation = () => {
               >
                 {item.name}
                 {/* Animated underline */}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 ${
-                  activeSection === item.href.slice(1)
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }`}></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 group-hover:w-full"></span>
                 {/* Hover background */}
                 <span className={`absolute inset-0 bg-accent/50 rounded-lg transition-transform duration-200 -z-10 ${
                   activeSection === item.href.slice(1)
