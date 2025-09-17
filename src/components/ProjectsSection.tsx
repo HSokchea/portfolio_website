@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ProjectModal } from "./ProjectModal"
-import project1Image from "@/assets/project1.jpg"
-import project2Image from "@/assets/project2.jpg"
+import wabookImage from "@/assets/wabook-logo.webp"
+import bizplayImage from "@/assets/bizplay-logo.webp"
+import bizplayOnPremiseImage from "@/assets/bizplay-On-Premise.webp"
 
 interface Project {
   id: string
@@ -19,42 +20,54 @@ interface Project {
 const projects: Project[] = [
   {
     id: "1",
-    title: "TaskFlow iOS",
-    description: "A beautiful task management app with intuitive design and powerful features.",
-    longDescription: "TaskFlow is a comprehensive task management application built for iOS that helps users organize their daily activities with style and efficiency. The app features a clean, modern interface designed with SwiftUI, offering seamless navigation and delightful interactions. Key features include smart categorization, priority levels, due date reminders, and collaborative task sharing. The app also integrates with Calendar and Reminders, providing a unified productivity experience.",
-    image: project1Image,
-    techStack: ["Swift", "SwiftUI", "Core Data", "CloudKit", "Combine"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://apps.apple.com",
-    category: "Productivity"
+    title: "WABOOKS",
+    description: "WABOOKS Mobile App allows all busy CEOs and business owners to register expense by taking a photo of receipt to upload the bookkeeping, and get notified on daily cash reports and bank account debit/credit transaction.",
+longDescription: `WABOOKS App features:
+• Instant Receipt Registration – Capture a photo or select one from your gallery to record expenses quickly, without needing the web version.
+• Advance Payment Requests – Easily request advance payments by selecting from available ledgers.
+• Smart Notifications – Stay updated with financial reports, banking transactions, and business contact details.
+• Multi-language Support – Available in Khmer, English, and Korean.`,
+    image: wabookImage,
+    techStack: ["Swift", "UIKit"],
+    liveUrl: "https://apps.apple.com/us/app/wabooks/id1556391775",
+    category: "B2B Fintech"
   },
   {
     id: "2",
-    title: "WeatherLens",
-    description: "Real-time weather app with stunning visuals and accurate forecasts.",
-    longDescription: "WeatherLens revolutionizes how users interact with weather information through an immersive, visual experience. The app combines real-time weather data with beautiful, dynamic backgrounds that change based on current conditions. Features include hourly and 10-day forecasts, severe weather alerts, interactive radar maps, and location-based weather tracking. Built with performance in mind, the app uses efficient data caching and smooth animations to provide instant access to weather information.",
-    image: project2Image,
-    techStack: ["Swift", "UIKit", "MapKit", "Core Location", "REST APIs"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://apps.apple.com",
-    category: "Weather"
+    title: "비즈플레이",
+    description: "The Bizplay app is an evidence-free expense processing service mobile app that can easily process automatically collected receipts on mobile.",
+    longDescription: `비즈플레이 App features:
+- Check the amount and details of this month's corporate card usage
+- Check corporate card receipt details
+- Expense by entering the purpose and contents of the receipt
+- Take a picture of the receipt and attach it when submitting the receipt
+- Preparation of expenditure resolution`,
+    image: bizplayImage,
+    techStack: ["Swift", "UIKit"],
+    liveUrl: "https://apps.apple.com/us/app/%EB%B9%84%EC%A6%88%ED%94%8C%EB%A0%88%EC%9D%B4/id1501659393",
+    category: "B2B Fintech"
   },
   {
     id: "3",
-    title: "FinanceTracker Pro",
+    title: "비즈플레이 On-Premise",
     description: "Personal finance management with intelligent insights and budgeting tools.",
-    longDescription: "FinanceTracker Pro is a comprehensive personal finance application that empowers users to take control of their financial future. The app offers automatic transaction categorization, budget creation and tracking, bill reminders, and investment portfolio monitoring. Advanced features include spending pattern analysis, financial goal setting, and AI-powered insights to help users make informed financial decisions. Security is paramount with Face ID authentication and bank-level encryption.",
-    image: project1Image,
-    techStack: ["Swift", "SwiftUI", "Core Data", "Charts", "Security Framework"],
-    githubUrl: "https://github.com",
-    category: "Finance"
+    longDescription: `비즈플레이 On-Premise App features:
+- Check the amount and details of this month's corporate card usage
+- Check corporate card receipt details
+- Expense by entering the purpose and contents of the receipt
+- Take a picture of the receipt and attach it when submitting the receipt
+- Completion of expenditure resolution`,
+    image: bizplayOnPremiseImage,
+    techStack: ["Swift", "UIKit"],
+    liveUrl: "https://apps.apple.com/us/app/%EB%B9%84%EC%A6%88%ED%94%8C%EB%A0%88%EC%9D%B4-on-premise/id1663429345",
+    category: "B2B Fintech"
   },
   {
     id: "4",
     title: "FitnessPal",
     description: "Comprehensive fitness tracking with workout plans and progress analytics.",
     longDescription: "FitnessPal is the ultimate fitness companion that helps users achieve their health and wellness goals through comprehensive tracking and personalized workout plans. The app features an extensive exercise database, custom workout builder, progress photos, body measurement tracking, and integration with HealthKit. Users can follow guided workout routines, track their nutrition, monitor sleep patterns, and receive motivational insights to stay on track with their fitness journey.",
-    image: project2Image,
+    image: bizplayImage,
     techStack: ["Swift", "SwiftUI", "HealthKit", "Core ML", "WatchKit"],
     githubUrl: "https://github.com",
     liveUrl: "https://apps.apple.com",
@@ -131,7 +144,7 @@ export function ProjectsSection() {
                         <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                           {project.title}
                         </h3>
-                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
+                        <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xs rounded-full">
                           {project.category}
                         </span>
                       </div>

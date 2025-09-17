@@ -24,7 +24,7 @@ export function ContactSection() {
       // For now, using the direct Supabase URL until env vars are properly configured
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://eruffbncnptlgjanlpnq.supabase.co'
       const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVydWZmYm5jbnB0bGdqYW5scG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MzMxMzIsImV4cCI6MjA3MzMwOTEzMn0.LEDm5JKYGhxXAiWe-hAa0bDoCG0aT-JlT1xizLGM72M'
-      
+
       const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
         method: 'POST',
         headers: {
@@ -105,7 +105,7 @@ export function ContactSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent py-2">
             Get In Touch
           </h2>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Contact Info */}
@@ -121,12 +121,12 @@ export function ContactSection() {
                     Let's work together
                   </h3>
                   <p className="text-muted-foreground leading-relaxed text-lg">
-                    I'm always interested in new opportunities and exciting projects. 
-                    Whether you have a question, want to discuss a project, or just 
+                    I'm always interested in new opportunities and exciting projects.
+                    Whether you have a question, want to discuss a project, or just
                     want to say hello, feel free to reach out!
                   </p>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center text-muted-foreground">
                     <Mail className="h-5 w-5 mr-3 text-primary" />
@@ -137,12 +137,12 @@ export function ContactSection() {
                     <span>Phnom Penh, Cambodia</span>
                   </div>
                 </div>
-                
+
                 {/* Social Links */}
                 <div>
                   <h4 className="font-semibold mb-4 text-foreground">Connect with me</h4>
                   <div className="flex space-x-4">
-                    {socialLinks.map((link) => (
+                    {socialLinks.map((link, i) => (
                       <motion.a
                         key={link.name}
                         href={link.url}
@@ -151,14 +151,22 @@ export function ContactSection() {
                         className={`p-3 bg-muted rounded-full text-muted-foreground transition-all duration-300 hover:bg-primary/10 ${link.color}`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: i * 0.3, // staggered wave effect
+                        }}
                       >
                         {link.icon}
                       </motion.a>
                     ))}
+
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Contact Form */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -183,7 +191,7 @@ export function ContactSection() {
                       className="transition-smooth focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                       Email
@@ -199,7 +207,7 @@ export function ContactSection() {
                       className="transition-smooth focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                       Message
@@ -215,7 +223,7 @@ export function ContactSection() {
                       className="transition-smooth focus:ring-2 focus:ring-primary/20 resize-none"
                     />
                   </div>
-                  
+
                   <Button
                     type="submit"
                     size="lg"

@@ -15,45 +15,47 @@ const timelineItems: TimelineItem[] = [
   {
     id: "1",
     type: "work",
-    title: "Senior iOS Developer",
-    organization: "TechFlow Inc.",
-    date: "2021 - Present",
-    description: "Leading iOS development for enterprise applications, mentoring junior developers, and implementing best practices for code quality and app performance.",
-    location: "San Francisco, CA"
+    title: "Officer, iOS Developer",
+    organization: "Phillip Bank Plc",
+    date: "2025 - Present",
+    description: "Developed and maintained iOS apps for banking projects such as Phillip Mobile Banking and Phillip Business.",
+    location: "Phnom Penh, Cambodia"
   },
   {
     id: "2",
-    type: "achievement",
-    title: "Apple Design Award Nomination",
-    organization: "Apple Inc.",
-    date: "2023",
-    description: "TaskFlow iOS app was nominated for Apple Design Award in the Innovation category for its intuitive user interface and seamless user experience."
-  },
-  {
-    id: "3",
     type: "work",
-    title: "iOS Developer",
-    organization: "StartupLabs",
-    date: "2019 - 2021",
-    description: "Developed and maintained multiple iOS applications from concept to App Store launch, working closely with design and product teams.",
-    location: "Austin, TX"
+    title: "Software Engineer, iOS Developer",
+    organization: "KOSIGN (Cambodia) Investment Co., Ltd.",
+    date: "2023 - 2025",
+    description: "Developed and maintained iOS apps for outsourced projects such as 비즈플레이 4.0, IBK 법인카드, 비즈플레이 On-Premise, 비플 법인카드, 비플 개인카드, 트리플러스, 우리카드 비즈플레이, 삼성카드 and 비즈플레이. Additionally, I was responsible for maintaining local iOS projects, including WABOOKS, Kosign Store and WeHR.",
+    location: "Phnom Penh, Cambodia"
+  },
+    {
+    id: "3",
+    type: "education",
+    title: "IT Professional Training",
+    organization: "Korean Software HRD Center",
+    date: "2022",
+    description: "Completed basic and advanced courses, gaining hands-on project experience, including the development of an iOS app 'WeMeet', and a web app 'K-Learning'.",
+    location: "Phnom Penh, Cambodia"
   },
   {
     id: "4",
     type: "education",
-    title: "Bachelor of Science in Computer Science",
-    organization: "University of California, Berkeley",
-    date: "2015 - 2019",
-    description: "Graduated Magna Cum Laude with focus on mobile application development and human-computer interaction.",
-    location: "Berkeley, CA"
+    title: "Bachelor's Degree in Computer Science",
+    organization: "Norton University",
+    date: "2019-2023",
+    description: "Learning C++, C#, Java, JavaScript and Flutter, with a foundation in Data Structures, Algorithms, Database Management, and Linux. My studies also include Statistics, Computer Networks, Web Development, Cyber Security and E-Commerce, equipping me with a well-rounded understanding of core computer science.",
+    location: "Phnom Penh, Cambodia"
   },
   {
     id: "5",
-    type: "project",
-    title: "Open Source Contributor",
-    organization: "Swift Community",
-    date: "2020 - Present",
-    description: "Active contributor to Swift open source projects and iOS development tools, with contributions to popular libraries and frameworks."
+    type: "work",
+    title: "Digital Marketing",
+    organization: "GMi68 International",
+    date: "2020 - 2022",
+    description: "Design creative marketing assets such as posters, banners, logos, and other visual content. Manage and maintain the company’s official Facebook page, including content planning, posting, and audience engagement",
+    location: "Phnom Penh, Cambodia"
   }
 ]
 
@@ -113,9 +115,9 @@ export function TimelineSection() {
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     whileHover={{ y: -10 }}
-                    transition={{ duration: 0.1 }}
+                    transition={{ duration: 0.1, ease: "easeOut"}}
                     viewport={{ once: true }}
-                    className="relative flex items-start"
+                    className="relative flex items-start transition-all duration-300 group"
                   >
                     {/* Timeline dot */}
                     <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-card shadow-medium ${getIconColor(item.type)}`}>
@@ -149,7 +151,7 @@ export function TimelineSection() {
                                     <p className="text-sm text-muted-foreground">{item.location}</p>
                                   )}
                                 </div>
-                                <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full whitespace-nowrap mt-2 md:mt-0">
+                                <span className="px-3 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-sm rounded-full whitespace-nowrap mt-2 md:mt-0">
                                   {item.date}
                                 </span>
                               </div>

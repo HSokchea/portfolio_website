@@ -67,7 +67,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             
             {/* Content */}
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-16rem)]">
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed" style={{ whiteSpace: "pre-line" }}>
                 {project.longDescription}
               </p>
               
