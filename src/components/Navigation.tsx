@@ -17,14 +17,28 @@ const navItems = [
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
+      // Check which section is in view
+      const sections = navItems.map(item => item.href.slice(1)); // Remove # from href
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Set initial active section
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,13 +83,25 @@ export const Navigation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth group"
+                className={`relative px-4 py-2 text-sm font-medium transition-smooth group ${
+                  activeSection === item.href.slice(1)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {item.name}
                 {/* Animated underline */}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-glow transition-all duration-300 ${
+                  activeSection === item.href.slice(1)
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}></span>
                 {/* Hover background */}
-                <span className="absolute inset-0 bg-accent/50 rounded-lg scale-0 transition-transform duration-200 group-hover:scale-100 -z-10"></span>
+                <span className={`absolute inset-0 bg-accent/50 rounded-lg transition-transform duration-200 -z-10 ${
+                  activeSection === item.href.slice(1)
+                    ? "scale-100"
+                    : "scale-0 group-hover:scale-100"
+                }`}></span>
               </motion.button>
             ))}
             {/* Desktop Theme Toggle */}
@@ -145,7 +171,11 @@ export const Navigation = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="w-full text-center px-6 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-smooth rounded-lg"
+                     className={`w-full text-center px-6 py-3 text-base font-medium transition-smooth rounded-lg ${
+                       activeSection === item.href.slice(1)
+                         ? "text-primary bg-accent/50"
+                         : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                     }`}
                   >
                     {item.name}
                   </motion.button>
