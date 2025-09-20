@@ -57,20 +57,32 @@ export function HeroSection() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-via-purple-500-hover text-white shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
-          >
-            <Download className="mr-2 h-5 w-5" />
-            Download Resume
-          </Button>
-          <Button
-            size="lg"
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 px-8 py-3 transition-smooth hover:bg-primary-hover text-white shadow-glow hover:shadow-large transition-all duration-300 px-8 py-3"
-          >
-            Learn More
-          </Button>
+<Button
+  size="lg"
+  className="relative rounded-full px-8 py-3 text-gray-900 dark:text-white shadow-glow hover:shadow-large transition-all duration-300"
+>
+  <span className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <span className="block h-full w-full rounded-full bg-white dark:bg-gray-900" />
+  </span>
+  <span className="relative flex items-center">
+    <Download className="mr-2 h-5 w-5" />
+    Download Resume
+  </span>
+</Button>
+
+<Button
+  size="lg"
+  onClick={() =>
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="relative rounded-full px-8 py-3 text-gray-900 dark:text-white shadow-glow hover:shadow-large transition-all duration-300"
+>
+  <span className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400">
+    <span className="block h-full w-full rounded-full bg-white dark:bg-gray-900" />
+  </span>
+  <span className="relative">Learn More</span>
+</Button>
+
         </motion.div>
       </motion.div>
 
