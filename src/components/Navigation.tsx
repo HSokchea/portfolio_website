@@ -26,21 +26,39 @@ export const Navigation = () => {
       
       // Check which section is in view
       const sections = navItems.map(item => item.href.slice(1)); // Remove # from href
-      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      const scrollPosition = window.scrollY + (window.innerHeight * 0.3); // Better mobile detection
       
-      for (let i = sections.length - 1; i >= 0; i--) {
+      let currentActiveSection = '';
+      
+      for (let i = 0; i < sections.length; i++) {
         const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + window.scrollY;
+          const sectionBottom = sectionTop + rect.height;
+          
+          // Check if section is in viewport
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentActiveSection = sections[i];
+            break;
+          }
+          
+          // Fallback for when scrolling near bottom
+          if (i === sections.length - 1 && scrollPosition >= sectionTop) {
+            currentActiveSection = sections[i];
+          }
         }
+      }
+      
+      if (currentActiveSection && currentActiveSection !== activeSection) {
+        setActiveSection(currentActiveSection);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Set initial active section
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
