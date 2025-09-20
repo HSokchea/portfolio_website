@@ -61,10 +61,20 @@ export const Navigation = () => {
   }, [activeSection]);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement;
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Get the navigation height to offset scroll position
+      const navHeight = 80; // Account for fixed nav height
+      const elementPosition = element.offsetTop - navHeight;
+      
+      // Close mobile menu first for better UX
       setIsOpen(false);
+      
+      // Smooth scroll with proper offset
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
     }
   };
 
