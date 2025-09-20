@@ -67,10 +67,10 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="grid grid-cols-4 gap-6 pt-4">
+              <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 pt-4">
                 {/* Card 1 */}
                 <div className="relative text-center p-4 rounded-xl shadow-soft overflow-hidden">
-                  <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                  <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                     <div className="h-full w-full rounded-xl bg-white dark:bg-gray-900"></div>
                   </div>
                   <div className="relative z-10">
@@ -81,7 +81,7 @@ export function AboutSection() {
 
                 {/* Card 2 */}
                 <div className="relative text-center p-4 rounded-xl shadow-soft overflow-hidden">
-                  <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400">
+                  <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400">
                     <div className="h-full w-full rounded-xl bg-white dark:bg-gray-900"></div>
                   </div>
                   <div className="relative z-10">
@@ -92,7 +92,7 @@ export function AboutSection() {
 
                 {/* Card 3 */}
                 <div className="relative text-center p-4 rounded-xl shadow-soft overflow-hidden">
-                  <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+                  <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
                     <div className="h-full w-full rounded-xl bg-white dark:bg-gray-900"></div>
                   </div>
                   <div className="relative z-10">
@@ -103,7 +103,7 @@ export function AboutSection() {
 
                 {/* Card 4 */}
                 <div className="relative text-center p-4 rounded-xl shadow-soft overflow-hidden">
-                  <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-green-400 via-emerald-500 to-lime-400">
+                  <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-green-400 via-emerald-500 to-lime-400">
                     <div className="h-full w-full rounded-xl bg-white dark:bg-gray-900"></div>
                   </div>
                   <div className="relative z-10">
