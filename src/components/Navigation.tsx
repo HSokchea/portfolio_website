@@ -63,18 +63,21 @@ export const Navigation = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href) as HTMLElement;
     if (element) {
-      // Get the navigation height to offset scroll position
-      const navHeight = 80; // Account for fixed nav height
-      const elementPosition = element.offsetTop - navHeight;
-      
       // Close mobile menu first for better UX
       setIsOpen(false);
       
-      // Smooth scroll with proper offset
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth"
-      });
+      // Use setTimeout to ensure menu closes before scrolling
+      setTimeout(() => {
+        // Get the navigation height to offset scroll position
+        const navHeight = isMobile ? 64 : 80; // Different heights for mobile/desktop
+        const elementPosition = element.offsetTop - navHeight;
+        
+        // Smooth scroll with proper offset
+        window.scrollTo({
+          top: Math.max(0, elementPosition), // Ensure we don't scroll to negative values
+          behavior: "smooth"
+        });
+      }, isMobile ? 300 : 0); // Add delay on mobile to let menu close
     }
   };
 
